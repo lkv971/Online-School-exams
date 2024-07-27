@@ -112,3 +112,20 @@ ON s.StudentID = m.StudentID
 GROUP BY s.LastName, s.FirstName
 ;
 GO
+
+DROP VIEW StudentExamDistinction
+;
+GO
+
+ALTER VIEW TeacherSubjectsMarks
+AS 
+SELECT t.TeacherID, t.LastName,
+t.FirstName,
+su.Subject,
+AVG(m.ExamMark) AS AverageMark
+FROM Teachers t
+INNER JOIN Marks m ON t.TeacherID = m.TeacherID
+INNER JOIN Subjects su ON su.SubjectID = m.SubjectID
+GROUP BY t.TeacherID, t.LastName, t.FirstName, su.Subject
+;
+GO
