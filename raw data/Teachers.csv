@@ -1,0 +1,11 @@
+TeacherID,FirstName,LastName,DateOfBirth,Address,Email
+1,David,Mwangi,3/15/1980,"Nairobi, Kenya",david.mwangi@example.com
+2,Grace,Kimani,6/22/1985,"Kampala, Uganda",grace.kimani@example.com
+3,Mohammed,Abdi,11/5/1978,"Mogadishu, Somalia",mohammed.abdi@example.com
+4,Alice,Wambua,2/28/1982,"Dar es Salaam, Tanzania",alice.wambua@example.com
+5,Peter,Njoroge,9/18/1987,"Nakuru, Kenya",peter.njoroge@example.com
+6,Amina,Omar,1/25/1980,"Djibouti City, Djibouti",amina.omar@example.com
+7,Joseph,Kassim,4/14/1985,"Addis Ababa, Ethiopia",joseph.kassim@example.com
+8,Wanjiru,Kamau,7/2/1982,"Kigali, Rwanda",wanjiru.kamau@example.com
+9,Moses,Tewolde,10/11/1987,"Asmara, Eritrea",moses.tewolde@example.com
+10,Aisha,Said,5/20/1980,"Zanzibar, Tanzania",aisha.said@example.com

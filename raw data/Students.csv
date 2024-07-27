@@ -1,0 +1,21 @@
+StudentID,FirstName,LastName,DateOfBirth,Address,Email
+1,John,Makori,5/15/1998,"Nairobi, Kenya",john.makori@example.com
+2,Amina,Njoroge,8/22/1999,"Nakuru, Kenya",amina.njoroge@example.com
+3,Daniel,Girma,11/5/1997,"Addis Ababa, Ethiopia",daniel.girma@example.com
+4,Sara,Kibet,3/30/1998,"Kampala, Uganda",sara.kibet@example.com
+5,Moses,Kimani,6/12/1999,"Dar es Salaam, Tanzania",moses.kimani@example.com
+6,Zainab,Said,9/18/1997,"Zanzibar, Tanzania",zainab.said@example.com
+7,Patrick,Kamau,1/25/1998,"Nairobi, Kenya",patrick.kamau@example.com
+8,Aisha,Mohammed,4/3/1999,"Mombasa, Kenya",aisha.mohammed@example.com
+9,Abdi,Nur,7/17/1997,"Mogadishu, Somalia",abdi.nur@example.com
+10,Elsa,Makamba,10/20/1998,"Kigali, Rwanda",elsa.makamba@example.com
+11,Omar,Kassim,1/8/1999,"Djibouti City, Djibouti",omar.kassim@example.com
+12,Grace,Wambui,4/14/1997,"Nairobi, Kenya",grace.wambui@example.com
+13,Yohannes,Tesfaye,7/2/1998,"Addis Ababa, Ethiopia",yohannes.tesfaye@example.com
+14,Halima,Abdi,10/11/1999,"Hargeisa, Somaliland",halima.abdi@example.com
+15,Robert,Oduor,1/28/1997,"Kisumu, Kenya",robert.oduor@example.com
+16,Nadia,Gebre,4/9/1998,"Asmara, Eritrea",nadia.gebre@example.com
+17,Suleiman,Ali,7/7/1999,"Mogadishu, Somalia",suleiman.ali@example.com
+18,Jane,Muthoni,10/19/1997,"Nairobi, Kenya",jane.muthoni@example.com
+19,Tewodros,Berhanu,1/14/1998,"Addis Ababa, Ethiopia",tewodros.berhanu@example.com
+20,Fatima,Ali,2/10/1998,"Mogadishu, Somalia",fatima.ali@example.com
