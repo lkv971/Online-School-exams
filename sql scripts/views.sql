@@ -86,20 +86,6 @@ EXEC sp_rename 'StudentsDistinctions',
 ;
 GO
 
-CREATE VIEW StudentAverageAge
-AS
-SELECT AVG(DATEDIFF(YEAR, DateOfBirth, GETDATE())) AS AverageAge
-FROM Students
-;
-GO
-
-CREATE VIEW TeacherAverageAge
-AS
-SELECT AVG(DATEDIFF(YEAR, DateOfBirth, GETDATE())) AS AverageAge
-FROM Teachers
-;
-GO
-
 CREATE VIEW ExamAverageAndRankPerStudent
 AS
 SELECT s.LastName,
