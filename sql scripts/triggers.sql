@@ -2,6 +2,36 @@ USE SchoolDB
 ;
 GO
 
+CREATE TRIGGER TrgAfterInstertMarks
+ON Marks
+AFTER INSERT
+AS 
+BEGIN
+INSERT INTO MarksAudit (
+MarkID,
+ChangeType,
+ChangeDate,
+StudentID,
+SubjectID,
+TeacherID,
+NewExamMark,
+NewExamDate
+)
+SELECT 
+i.MarkID,
+'INSERT',
+GETDATE(),
+i.StudentID,
+i.SubjectID,
+i.TeacherID,
+i.ExamMark,
+i.ExamDate
+FROM inserted i
+;
+END
+;
+GO
+
 CREATE TRIGGER TrgAfterInsertStudent
 ON Students
 AFTER INSERT
@@ -15,7 +45,8 @@ NewFirstName,
 NewLastName,
 NewDateOfBirth,
 NewEmail,
-NewCity
+NewCity,
+NewCountry
 )
 SELECT 
 i.StudentID,
@@ -25,7 +56,8 @@ i.FirstName,
 i.LastName,
 i.DateOfBirth,
 i.Email,
-i.City
+i.City,
+i.Country
 FROM inserted i
 ;
 END
@@ -45,7 +77,8 @@ OldFirstName,
 OldLastName,
 OldDateOfBirth,
 OldEmail,
-OldCity
+OldCity,
+OldCountry
 )
 SELECT 
 d.StudentID,
@@ -55,7 +88,8 @@ d.FirstName,
 d.LastName,
 d.DateOfBirth,
 d.Email,
-d.City
+d.City,
+d.Country
 FROM deleted d
 ;
 END
@@ -80,7 +114,9 @@ NewDateOfBirth,
 OldEmail,
 NewEmail,
 OldCity,
-NewCity
+NewCity,
+OldCountry,
+NewCountry
 )
 SELECT
 d.StudentID,
@@ -95,7 +131,9 @@ i.DateOfBirth,
 d.Email,
 i.Email,
 d.City,
-i.City
+i.City,
+d.Country,
+i.Country
 FROM deleted d
 INNER JOIN inserted i
 ON d.StudentID =i.StudentID
@@ -117,7 +155,8 @@ NewFirstName,
 NewLastName,
 NewDateOfBirth,
 NewEmail,
-NewCity
+NewCity,
+NewCountry
 )
 SELECT 
 i.TeacherID,
@@ -127,7 +166,8 @@ i.FirstName,
 i.LastName,
 i.DateOfBirth,
 i.Email,
-i.City
+i.City,
+i.Country
 FROM inserted i
 ;
 END
@@ -147,7 +187,8 @@ OldFirstName,
 OldLastName,
 OldDateOfBirth,
 OldEmail,
-OldCity
+OldCity,
+OldCountry
 )
 SELECT 
 d.TeacherID,
@@ -157,7 +198,8 @@ d.FirstName,
 d.LastName,
 d.DateOfBirth,
 d.Email,
-d.City
+d.City,
+d.Country
 FROM deleted d
 ;
 END
@@ -182,7 +224,9 @@ NewDateOfBirth,
 OldEmail,
 NewEmail,
 OldCity,
-NewCity
+NewCity,
+OldCountry,
+NewCountry
 )
 SELECT
 d.TeacherID,
@@ -197,7 +241,9 @@ i.DateOfBirth,
 d.Email,
 i.Email,
 d.City,
-i.City
+i.City,
+d.Country,
+i.Country
 FROM deleted d
 INNER JOIN inserted i
 ON d.TeacherID = i.TeacherID
