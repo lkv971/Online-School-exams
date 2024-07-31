@@ -2,6 +2,58 @@ USE SchoolDB
 ;
 GO
 
+CREATE PROCEDURE InsertMarks
+@StudentID INT,
+@SubjectID INT,
+@TeacherID INT,
+@ExamDate DATE,
+@ExamMark INT,
+@ExamLetterMark CHAR(2)
+AS
+BEGIN
+INSERT INTO Marks (
+StudentID,
+SubjectID,
+TeacherID,
+ExamDate,
+ExamMark,
+ExamLetterMark
+)
+VALUES (
+@StudentID,
+@SubjectID,
+@TeacherID,
+@ExamDate,
+@ExamMark,
+@ExamLetterMark
+)
+SELECT SCOPE_IDENTITY() AS NewMarks
+END
+;
+GO
+
+CREATE PROCEDURE RemoveMarks
+@MarkID INT
+AS
+BEGIN
+DELETE FROM Marks
+WHERE MarkID = @MarkID
+END
+;
+GO
+
+CREATE PROCEDURE UpdateExamMark
+@MarkID INT,
+@ExamMark INT
+AS
+BEGIN
+UPDATE Marks
+SET ExamMark = @ExamMark
+WHERE MarkID = @MarkID
+END
+;
+GO
+
 CREATE PROCEDURE InsertStudents
 @LastName VARCHAR(30),
 @FirstName VARCHAR(30),
@@ -107,43 +159,5 @@ END
 ;
 GO
 
-CREATE PROCEDURE InsertMarks
-@StudentID INT,
-@SubjectID INT,
-@TeacherID INT,
-@ExamDate DATE,
-@ExamMark INT,
-@ExamLetterMark CHAR(2)
-AS
-BEGIN
-INSERT INTO Marks (
-StudentID,
-SubjectID,
-TeacherID,
-ExamDate,
-ExamMark,
-ExamLetterMark
-)
-VALUES (
-@StudentID,
-@SubjectID,
-@TeacherID,
-@ExamDate,
-@ExamMark,
-@ExamLetterMark
-)
-SELECT SCOPE_IDENTITY() AS NewMarks
-END
-;
-GO
 
-CREATE PROCEDURE RemoveMarks
-@MarkID INT
-AS
-BEGIN
-DELETE FROM Marks
-WHERE MarkID = @MarkID
-END
-;
-GO
 
