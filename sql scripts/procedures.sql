@@ -42,7 +42,7 @@ END
 ;
 GO
 
-CREATE PROCEDURE UpdateExamMark
+CREATE PROCEDURE UpdateMarks
 @MarkID INT,
 @ExamMark INT
 AS
