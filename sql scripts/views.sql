@@ -2,6 +2,55 @@ USE SchoolDB
 ;
 GO
 
+CREATE VIEW StudentsDistinctions
+AS
+SELECT s.LastName,
+s.FirstName,
+AVG(m.ExamMark) AS AverageMark,
+CASE
+	WHEN AVG(m.ExamMark) BETWEEN 90 AND 100 THEN 'Very Good'
+	WHEN AVG(m.ExamMark) BETWEEN 80 AND 89 THEN 'Good'
+	WHEN AVG(m.ExamMark) BETWEEN 75 AND 79 THEN 'Fairly Good'
+	WHEN AVG(m.ExamMark) BETWEEN 70 AND 74 THEN 'Passed'
+	ELSE 'Failed'
+END AS Distinction
+FROM Students s
+INNER JOIN Marks m
+ON s.StudentID = m.StudentID
+GROUP BY s.LastName, s.FirstName
+;
+GO
+
+CREATE VIEW ExamAverageAndRankPerStudent
+AS
+SELECT s.LastName,
+s.FirstName,
+AVG(m.ExamMark) AS AverageMark,
+RANK() OVER (ORDER BY AVG(m.ExamMark) DESC) AS Rank
+FROM Students s
+INNER JOIN Marks m
+ON s.StudentID = m.StudentID
+GROUP BY s.LastName, s.FirstName
+;
+GO
+
+DROP VIEW StudentExamDistinction
+;
+GO
+
+ALTER VIEW TeacherSubjectsMarks
+AS 
+SELECT t.TeacherID, t.LastName,
+t.FirstName,
+su.Subject,
+AVG(m.ExamMark) AS AverageMark
+FROM Teachers t
+INNER JOIN Marks m ON t.TeacherID = m.TeacherID
+INNER JOIN Subjects su ON su.SubjectID = m.SubjectID
+GROUP BY t.TeacherID, t.LastName, t.FirstName, su.Subject
+;
+GO
+
 CREATE VIEW StudentCountPerCountry 
 AS
 SELECT Country,
@@ -46,25 +95,6 @@ GROUP BY t.LastName, t.FirstName, su.Subject
 ;
 GO
 
-CREATE VIEW StudentsDistinctions
-AS
-SELECT s.LastName,
-s.FirstName,
-AVG(m.ExamMark) AS AverageMark,
-CASE
-	WHEN AVG(m.ExamMark) BETWEEN 90 AND 100 THEN 'Very Good'
-	WHEN AVG(m.ExamMark) BETWEEN 80 AND 89 THEN 'Good'
-	WHEN AVG(m.ExamMark) BETWEEN 75 AND 79 THEN 'Fairly Good'
-	WHEN AVG(m.ExamMark) BETWEEN 70 AND 74 THEN 'Passed'
-	ELSE 'Failed'
-END AS Distinction
-FROM Students s
-INNER JOIN Marks m
-ON s.StudentID = m.StudentID
-GROUP BY s.LastName, s.FirstName
-;
-GO
-
 CREATE VIEW AverageMarkPerAcademicField
 AS
 SELECT su.AcademicField,
@@ -86,32 +116,3 @@ EXEC sp_rename 'StudentsDistinctions',
 ;
 GO
 
-CREATE VIEW ExamAverageAndRankPerStudent
-AS
-SELECT s.LastName,
-s.FirstName,
-AVG(m.ExamMark) AS AverageMark,
-RANK() OVER (ORDER BY AVG(m.ExamMark) DESC) AS Rank
-FROM Students s
-INNER JOIN Marks m
-ON s.StudentID = m.StudentID
-GROUP BY s.LastName, s.FirstName
-;
-GO
-
-DROP VIEW StudentExamDistinction
-;
-GO
-
-ALTER VIEW TeacherSubjectsMarks
-AS 
-SELECT t.TeacherID, t.LastName,
-t.FirstName,
-su.Subject,
-AVG(m.ExamMark) AS AverageMark
-FROM Teachers t
-INNER JOIN Marks m ON t.TeacherID = m.TeacherID
-INNER JOIN Subjects su ON su.SubjectID = m.SubjectID
-GROUP BY t.TeacherID, t.LastName, t.FirstName, su.Subject
-;
-GO
