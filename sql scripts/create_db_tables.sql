@@ -46,6 +46,22 @@ Email VARCHAR(50)
 ;
 GO
 
+CREATE TABLE MarksAudit (
+MarkAuditID INT IDENTITY(1,1) PRIMARY KEY,
+MarkID INT,
+ChangeType VARCHAR(20),
+ChangeDate DATETIME,
+StudentID INT,
+SubjectID INT,
+TeacherID INT,
+OldMarkObtained INT,
+NewMarkObtained INT,
+OldExamDate DATE,
+NewExamDate DATE
+)
+; 
+GO
+
 CREATE TABLE SubjectAudit (
 AuditID INT PRIMARY KEY,
 SubjectID INT,
@@ -57,3 +73,44 @@ NewSubject VARCHAR(50)
 ;
 GO
 
+CREATE TABLE TeachersAudit (
+TeachersAuditID INT IDENTITY(1,1) PRIMARY KEY,
+TeacherID INT,
+ChangeType VARCHAR(20),
+ChangeDate DATETIME,
+OldFirstName VARCHAR(20),
+NewFirstName VARCHAR(20),
+OldLastName VARCHAR(20),
+NewLastName VARCHAR(20),
+OldDateOfBirth DATE,
+NewDateOfBirth DATE,
+OldEmail VARCHAR(50),
+NewEmail VARCHAR(50),
+OldCity VARCHAR(50),
+NewCity VARCHAR(50),
+OldState VARCHAR(50),
+NewState VARCHAR(50)
+)
+;
+GO
+
+CREATE TABLE StudentAudit (
+StudentAuditID INT IDENTITY(1,1) PRIMARY KEY,
+StudentID INT,
+ChangeType VARCHAR(20),
+ChangeDate DATETIME,
+OldFirstName VARCHAR(20),
+NewFirstName VARCHAR(20),
+OldLastName VARCHAR(20),
+NewLastName VARCHAR(20),
+OldDateOfBirth DATE,
+NewDateOfBirth DATE,
+OldEmail VARCHAR(50),
+NewEmail VARCHAR(50),
+OldCity VARCHAR(50),
+NewCity VARCHAR(50),
+OldState VARCHAR(50),
+NewState VARCHAR(50)
+)
+;
+GO
