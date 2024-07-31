@@ -32,6 +32,73 @@ END
 ;
 GO
 
+CREATE TRIGGER TrgAfterDeleteMarks
+ON Marks
+AFTER DELETE
+AS 
+BEGIN
+INSERT INTO MarksAudit (
+MarkID,
+ChangeType,
+ChangeDate,
+StudentID,
+SubjectID,
+TeacherID,
+OldExamMark,
+OldExamDate
+)
+SELECT 
+d.MarkID,
+'DELETE',
+GETDATE(),
+d.StudentID,
+d.SubjectID,
+d.TeacherID,
+d.ExamMark,
+d.ExamDate
+FROM deleted d
+;
+END
+;
+GO
+
+CREATE TRIGGER TrgAfterUpdateMarks
+ON Marks
+AFTER UPDATE
+AS 
+BEGIN
+INSERT INTO MarksAudit (
+MarkID,
+ChangeType,
+ChangeDate,
+StudentID,
+SubjectID,
+TeacherID,
+OldExamMark,
+NewExamMark,
+OldExamDate,
+NewExamDate
+)
+SELECT 
+d.MarkID,
+'UPDATE',
+GETDATE(),
+d.StudentID,
+d.SubjectID,
+d.TeacherID,
+d.ExamMark,
+i.ExamMark,
+d.ExamDate,
+i.ExamDate
+FROM deleted d 
+INNER JOIN inserted i
+ON d.MarkID = i.MarkID
+;
+END
+;
+GO
+
+
 CREATE TRIGGER TrgAfterInsertStudent
 ON Students
 AFTER INSERT
