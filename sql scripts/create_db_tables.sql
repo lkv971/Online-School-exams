@@ -54,8 +54,8 @@ ChangeDate DATETIME,
 StudentID INT,
 SubjectID INT,
 TeacherID INT,
-OldMarkObtained INT,
-NewMarkObtained INT,
+OldExamMark INT,
+NewExamMark INT,
 OldExamDate DATE,
 NewExamDate DATE
 )
@@ -88,8 +88,8 @@ OldEmail VARCHAR(50),
 NewEmail VARCHAR(50),
 OldCity VARCHAR(50),
 NewCity VARCHAR(50),
-OldState VARCHAR(50),
-NewState VARCHAR(50)
+OldCountry VARCHAR(50),
+NewCountry VARCHAR(50)
 )
 ;
 GO
@@ -109,8 +109,8 @@ OldEmail VARCHAR(50),
 NewEmail VARCHAR(50),
 OldCity VARCHAR(50),
 NewCity VARCHAR(50),
-OldState VARCHAR(50),
-NewState VARCHAR(50)
+OldCountry VARCHAR(50),
+NewCountry VARCHAR(50)
 )
 ;
 GO
