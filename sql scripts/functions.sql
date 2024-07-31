@@ -2,18 +2,7 @@ USE SchoolDB
 ;
 GO
 
-CREATE FUNCTION GetStudentInfo (@StudentID INT)
-RETURNS TABLE
-AS
-RETURN
-(
-SELECT * FROM Students
-WHERE StudentID = @StudentID
-)
-;
-GO
-
-CREATE FUNCTION GetStudentExamMarks (@StudentID INT)
+CREATE FUNCTION GetStudentMarksPerSubject (@StudentID INT)
 RETURNS TABLE
 AS
 RETURN
@@ -31,7 +20,7 @@ WHERE s.StudentID = @StudentID
 ;
 GO
 
-CREATE FUNCTION GetStudentAverageExamMark (@StudentID INT)
+CREATE FUNCTION GetStudentExamMarkAverage (@StudentID INT)
 RETURNS TABLE
 AS
 RETURN 
@@ -49,7 +38,18 @@ GROUP BY s.StudentID, s.LastName, s.FirstName
 ;
 GO
 
-CREATE FUNCTION GetStudentRankAndDistinction (@LastName VARCHAR(30))
+CREATE FUNCTION GetStudentInfo (@StudentID INT)
+RETURNS TABLE
+AS
+RETURN
+(
+SELECT * FROM Students
+WHERE StudentID = @StudentID
+)
+;
+GO
+
+CREATE FUNCTION GetStudentExamRankAndDistinction (@LastName VARCHAR(30))
 RETURNS TABLE
 AS
 RETURN
@@ -59,7 +59,7 @@ d.FirstName,
 d.AverageMark,
 d.Distinction,
 ar.Rank 
-FROM StudentExamDistinction d
+FROM StudentsDistinctions d
 INNER JOIN ExamAverageAndRankPerStudent ar
 ON d.LastName = ar.LastName
 WHERE d.LastName = @LastName
@@ -93,7 +93,7 @@ WHERE TeacherID = @TeacherID
 ;
 GO
 
-CREATE FUNCTION GetTeacherdditionalInfo (@LastName VARCHAR(30))
+CREATE FUNCTION GetTeacherAdditionalInfo (@LastName VARCHAR(30))
 RETURNS TABLE 
 AS 
 RETURN
