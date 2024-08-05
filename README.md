@@ -99,7 +99,4 @@ The database for this project is designed using SQL Server, with scripts provide
 
 - Review the screenshot in the `Screenshots` folder to get a quick overview of the student and staff performance dashboard.
 
----
-
-This updated README provides a clear and organized structure for your repository, making it easy for recruiters and potential employers to navigate and understand your work.
 
