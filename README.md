@@ -53,6 +53,13 @@ This folder contains Power BI reports and dashboards for data visualization:
 This folder contains schema-related documentation and diagrams:
 - **Snowflake Schema Diagram**: Screenshot representing the snowflake schema used for organizing the data warehouse.
 
+### 6. SQL Server Jobs
+
+This folder includes SQL scripts used for automating routine database tasks:
+- **monthly_full_backup_school.sql**: Script for performing monthly full backups of the school database.
+- **weekly_differential_backup_school.sql**: Script for performing weekly differential backups, capturing changes since the last full backup.
+- **weekly_insert_school_marks.sql**: Script for weekly data inserts into the marks-related tables.
+
 ## Detailed Description
 
 This repository provides a complete framework for analyzing school exam results, from raw data ingestion to advanced data visualization. It includes:
@@ -99,4 +106,9 @@ The database for this project is designed using SQL Server, with scripts provide
 
 - Review the screenshot in the `Screenshots` folder to get a quick overview of the student and staff performance dashboard.
 
+### SQL Server 
+
+- **Monthly Full Backup**: The `monthly_full_backup_school.sql` script automates a full backup of the database every month, preserving the entire database state.
+- **Weekly Differential Backup**: The `weekly_differential_backup_school.sql` script automates weekly differential backups, capturing any changes since the last full backup.
+- **Weekly Data Insert**: The `weekly_insert_school_marks.sql` script automates the weekly insertion of exam marks into the relevant tables.
 
