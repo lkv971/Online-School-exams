@@ -1,11 +1,11 @@
 USE [msdb]
 GO
 
-/****** Object:  Job [monthly_full_backup_school]    Script Date: 8/8/2024 10:08:35 AM ******/
+/****** Object:  Job [monthly_full_backup_school]    Script Date: 8/8/2024 4:04:08 PM ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 8/8/2024 10:08:35 AM ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 8/8/2024 4:04:08 PM ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -25,7 +25,7 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'monthly_full_backup_school',
 		@category_name=N'[Uncategorized (Local)]', 
 		@owner_login_name=N'LAPTOP-E44HM49P\ACER', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Full Backup]    Script Date: 8/8/2024 10:08:35 AM ******/
+/****** Object:  Step [Full Backup]    Script Date: 8/8/2024 4:04:08 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Full Backup', 
 		@step_id=1, 
 		@cmdexec_success_code=0, 
@@ -40,7 +40,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Full Bac
 TO DISK ''C:\Users\ACER\Documents\GitHub\School\backups\Full\full_back_up_school_'' + FORMAT(GETDATE(), ''yyyymmdd'') + ''.bak''
 WITH INIT
 ;
-GO', 
+', 
 		@database_name=N'SchoolDB', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
