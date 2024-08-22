@@ -60,11 +60,18 @@ This folder includes SQL scripts used for automating routine database tasks:
 - **weekly_differential_backup_school.sql**: Script for performing weekly differential backups, capturing changes since the last full backup.
 - **weekly_insert_school_marks.sql**: Script for weekly data inserts into the marks-related tables.
 
+### 7. Data Warehouse Diagrams
+
+This folder contains screenshots and diagrams for data warehouse-related activities:
+- **dataflow_diagram**: Screenshot of the dataflow diagram representing data movement in the warehouse.
+- **pipeline_diagram**: Screenshot of the pipeline diagram representing ETL processes and data orchestration in the warehouse.
+
 ## Detailed Description
 
 This repository provides a complete framework for analyzing school exam results, from raw data ingestion to advanced data visualization. It includes:
 
 - **Database Management**: SQL scripts for creating and maintaining database structures, including tables, views, triggers, and functions.
+- **Data Warehousing**: Diagrams that showcase how data flows and pipelines are used within a data warehouse environment, even though scripts are currently not available.
 - **Data Ingestion**: Scripts to insert and manage raw data related to school operations.
 - **Data Analysis**: Power BI reports that offer insights into the academic performance and demographics of students and teachers.
 - **Visualization**: Dashboards that provide an at-a-glance view of key performance indicators (KPIs) and metrics.
@@ -79,6 +86,7 @@ The database for this project is designed using SQL Server, with scripts provide
 
 - **SQL Server Management Studio (SSMS)**: Used for managing the SQL Server database, executing T-SQL scripts, and performing database maintenance tasks.
 - **Power BI**: Utilized for creating interactive and visually appealing reports and dashboards, providing insights into school data.
+- **Microsoft Fabric (Synapse Data Warehouse)**: Used for data flow and pipeline orchestration within a cloud data warehouse environment.
 
 ## How to Use
 
