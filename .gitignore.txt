@@ -1,1 +1,5 @@
-backups/
+# Ignore all files in the Full backups directory
+backups/Full/
+
+# Ignore all files in the Differential backups directory
+backups/Differential/
