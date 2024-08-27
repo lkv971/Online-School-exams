@@ -1,11 +1,11 @@
 USE [msdb]
 GO
 
-/****** Object:  Job [weekly_insert_school_marks]    Script Date: 8/8/2024 4:03:03 PM ******/
+/****** Object:  Job [weekly_insert_school_marks]    Script Date: 8/27/2024 6:03:08 AM ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 8/8/2024 4:03:03 PM ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 8/27/2024 6:03:08 AM ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -25,7 +25,7 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'weekly_insert_school_marks',
 		@category_name=N'[Uncategorized (Local)]', 
 		@owner_login_name=N'LAPTOP-E44HM49P\ACER', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Bulk Insert]    Script Date: 8/8/2024 4:03:03 PM ******/
+/****** Object:  Step [Bulk Insert]    Script Date: 8/27/2024 6:03:09 AM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Bulk Insert', 
 		@step_id=1, 
 		@cmdexec_success_code=0, 
@@ -42,8 +42,7 @@ WITH (
 FIRSTROW =2,
 FIELDTERMINATOR = '','',
 ROWTERMINATOR = ''\n'',
-TABLOCK,
-FORMAT = ''CSV''
+TABLOCK
 )
 ;
 ', 
